@@ -1,0 +1,6 @@
+<Project>
+  <PropertyGroup>
+    <RestoreUseStaticGraphEvalutation>true</RestoreUseStaticGraphEvalutation>
+    <SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
+  </PropertyGroup>
+</Project>

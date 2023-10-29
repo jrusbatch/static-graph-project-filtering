@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.Build.Traversal/4.1.0" InitialTargets="FilterProjects">
+
+  <ItemGroup>
+    <ProjectReference Include="**/*.csproj" />
+  </ItemGroup>
+
+  <Target Name="FilterProjects">
+
+    <MSBuild Projects="@(ProjectReference)" Targets="GetProjectStyles">
+      <Output TaskParameter="TargetOutputs" ItemName="_ProjectsWithProjectStyle" />
+    </MSBuild>
+
+    <!--
+      If building with `dotnet msbuild` rather than `msbuild.exe`, remove project files that do not use the SDK-format
+      from the collection of project references.
+    -->
+    <ItemGroup Condition=" '$(MSBuildRuntimeType)' == 'Core' ">
+
+      <ProjectReference Remove="%(_ProjectsWithProjectStyle.OriginalItemSpec)"
+                        Condition=" '%(_ProjectsWithProjectStyle.ProjectStyle)' == 'Legacy' " />
+    </ItemGroup>
+
+  </Target>
+
+</Project>

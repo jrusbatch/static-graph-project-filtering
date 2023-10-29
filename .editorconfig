@@ -1,0 +1,18 @@
+# EditorConfig is awesome: http://EditorConfig.org
+# Visual Studio docs for editorconfig: https://docs.microsoft.com/en-us/visualstudio/ide/editorconfig-code-style-settings-reference
+
+# Top-most EditorConfig file
+root = true
+
+[*]
+indent_style = space
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.{cs,fs}]
+indent_size = 4
+
+# Xml project files
+[*.{csproj,proj,targets,props}]
+charset = utf-8
+indent_size = 2
